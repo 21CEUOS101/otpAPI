@@ -1,7 +1,5 @@
 const dotenv = require("dotenv").config({path : './.env'});
 
-console.log();
-
 const generateOTP = () => {
     const digits = '0123456789';
     let OTP = '';
@@ -16,7 +14,6 @@ const sendOTP = async (phonenumber) => {
     const accountSid = process.env.ACNT_SID;
     const authToken = process.env.ACNT_TKN;
 
-    // console.log(accountSid);
     const client = require('twilio')(accountSid, authToken);
 
     const otp = generateOTP();
@@ -28,7 +25,6 @@ const sendOTP = async (phonenumber) => {
             from: '+16019214379',
             to: '+91' + phonenumber
         }).then((message) => {
-            // console.log(message.sid);
             return message.sid;
         });
         
